@@ -4,16 +4,17 @@
 #define OPTSIZE 10 // >= 4
 int main(int argc, char *argv[])
 {
-    int flags[4] = {0};
+    // int flags[4] = {0};
+
     // step 1
     char *shortopts = "hvr:a::";
 
     // step 2
     struct option longopts[] = {
-        {"help"   , no_argument      , &flags[0], 'h'},
-        {"version", no_argument      , &flags[1], 'v'},
-        {"req"    , required_argument, &flags[2], 'r'},
-        {"any"    , optional_argument, &flags[3], 'a'},
+        {"help"   , no_argument      , NULL /*&flags[0]*/ , 'h'},
+        {"version", no_argument      , NULL /*&flags[1]*/ , 'v'},
+        {"req"    , required_argument, NULL /*&flags[2]*/ , 'r'},
+        {"any"    , optional_argument, NULL /*&flags[3]*/ , 'a'},
         OPT_END};
 
     // step 3
@@ -35,10 +36,10 @@ int main(int argc, char *argv[])
             printf("\'version\' option enabled.\n");
             break;
         case 'r': // req
-            printf("\'req\' option enabled.\n");
+            printf("\'req\' option enabled. arg = %s\n", findopts[i].arg);
             break;
         case 'a': // any
-            printf("\'any\' option enabled.\n");
+            printf("\'any\' option enabled. arg = %s\n", findopts[i].arg);
             break;
         default:
             break;
@@ -51,11 +52,11 @@ int main(int argc, char *argv[])
         printf("%s\n", argv[i]);
     }
 
-    printf("option flag ---\n");
-    for (i = 0; i < 4; i++)
-    {
-        printf("flag[%d]: %d\n", i, flags[i]);
-    }
-
+    // printf("option flag ---\n");
+    // for (i = 0; i < 4; i++)
+    // {
+    //     printf("flag[%d]: %d\n", i, flags[i]);
+    // }
+    
     return 0;
 }
