@@ -20,7 +20,7 @@ optarg は，C言語の `main` 関数で引数を簡単に処理するための�
 
 # 使用方法
 
-[example/](https://github.com/GrapeJuicer/optarg/blob/main/example/example.c) にサンプルプログラムがあります．
+[example/](https://github.com/GrapeJuicer/optarg/blob/main/example) にサンプルプログラムがあります．
 ここでは，別の例を説明します．仕様は以下の通りです．
 
 | short option         | long option                              | argument |

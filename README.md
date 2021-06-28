@@ -20,7 +20,7 @@
 
 # Usage
 
-There is a sample program in [example/](https://github.com/GrapeJuicer/optarg/blob/main/example/example.c) .
+There is a sample program in [example/](https://github.com/GrapeJuicer/optarg/blob/main/example) .
 In this section, we will explain the another example. The specifications are as follows:
 
 | short option         | long option                              | argument |
