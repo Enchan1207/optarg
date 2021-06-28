@@ -2,6 +2,7 @@
 #include "../optarg.h"
 
 #define OPTSIZE 10 // >= 4
+
 int main(int argc, char *argv[])
 {
     // int flags[4] = {0};
@@ -57,6 +58,6 @@ int main(int argc, char *argv[])
     // {
     //     printf("flag[%d]: %d\n", i, flags[i]);
     // }
-    
+
     return 0;
 }
