@@ -23,12 +23,12 @@
 There is a sample program in [example/](https://github.com/GrapeJuicer/optarg/blob/main/example) .
 In this section, we will explain the another example. The specifications are as follows:
 
-| short option         | long option                              | argument |
-| :------------------- | :--------------------------------------- | :------- |
-| -h                   | --help                                   | none     |
-| -v                   | --version                                | none     |
-| -r=`<reqoption>`     | --req=`<reqoption>`, --req `<reqoption>` | require  |
-| -a, -a=`<anyoption>` | --any, --any=`<anyoption>`               | optional |
+| short option                    | long option                              | argument |
+| :------------------------------ | :--------------------------------------- | :------- |
+| -h                              | --help                                   | none     |
+| -v                              | --version                                | none     |
+| -r <reqoption>, -r`<reqoption>` | --req=`<reqoption>`, --req `<reqoption>` | require  |
+| -a, -a`<anyoption>`             | --any, --any=`<anyoption>`               | optional |
 
 ## Step. 1
 
