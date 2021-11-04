@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     struct optarg findopts[OPTSIZE];
 
     // step 4
-    int folen = optprocess(argc, argv, shortopts, longopts, findopts, OPTSIZE);
+    int folen = getopt_once(argc, argv, shortopts, longopts, findopts, OPTSIZE);
 
     // step 5
     int i;

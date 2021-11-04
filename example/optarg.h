@@ -18,7 +18,7 @@ struct optarg
 
 // プロトタイプ宣言 -----------------------------------
 
-int optprocess(
+int getopt_once(
     int argc,                      // 引数の個数
     char *argv[],                  // 引数の内容
     const char *shortopts,         // オプション群(短)

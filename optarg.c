@@ -2,7 +2,7 @@
 
 // option '?' 禁止
 // findoptsには見つかったオプションのvalが追加される
-int optprocess(int argc, char *argv[], const char *shortopts, const struct option *longopts, struct optarg findopts[], int len_findopts)
+int getopt_once(int argc, char *argv[], const char *shortopts, const struct option *longopts, struct optarg findopts[], int len_findopts)
 {
     int opt;
     int i;
