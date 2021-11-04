@@ -12,20 +12,20 @@ endif
 TARGET = example.exe
 
 # source list
-SRCS = example.c optarg.c
+SRCS = example.c
 
 # .obj list
 OBJS = ${SRCS:.c=.o}
 
 # header list
-HEADERS = optarg.h
+HEADERS = ../optarg.h
 
 # compiler/linker
 CC = gcc
 CCFLAGS = -Wall
 LD = gcc
 LDFLAGS =
-LIBS =
+LIBS = -L../ -loptarg
 
 # target <- obj
 $(TARGET) : $(OBJS)
