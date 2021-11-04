@@ -11,7 +11,7 @@
 // 定義 -----------------------------------------------
 
 #define OPT_END {0, 0, 0, 0}
-#define DOCOPT_END {-1, 0, 0, 0, 0, 0}
+#define DOCOPT_END {-1, 0, 0, 0, 0}
 
 #define SFREE(ptr) { free(ptr); ptr = NULL; }
 
@@ -41,7 +41,6 @@ struct docoption
     int short_name;
     char *long_name;
     int has_arg;
-    int *flag;
     char *help_msg;
 };
 

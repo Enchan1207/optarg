@@ -112,7 +112,7 @@ int __optSize(const struct docoption *opts)
 int __isEnd(struct docoption opt)
 {
     struct docoption nullopt = DOCOPT_END;
-    return opt.val == nullopt.val && opt.short_name == nullopt.short_name && opt.long_name == nullopt.long_name && opt.has_arg == nullopt.has_arg && opt.flag == nullopt.flag && opt.help_msg == nullopt.help_msg;
+    return opt.val == nullopt.val && opt.short_name == nullopt.short_name && opt.long_name == nullopt.long_name && opt.has_arg == nullopt.has_arg && opt.help_msg == nullopt.help_msg;
 }
 
 int __initOpts(char **shortopts, size_t longopts_size, struct option **longopts, size_t shortopts_size)
@@ -160,7 +160,7 @@ int __generateLongOption(const struct docoption *docopts, size_t docopts_size, s
         {
             longopts[cnt].name = docopts[i].long_name;
             longopts[cnt].has_arg = docopts[i].has_arg;
-            longopts[cnt].flag = docopts[i].flag;
+            longopts[cnt].flag = NULL;
             longopts[cnt].val = docopts[i].val;
             cnt++;
         }
