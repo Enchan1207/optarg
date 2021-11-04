@@ -115,50 +115,6 @@ int __isEnd(struct docoption opt)
     return opt.val == nullopt.val && opt.short_name == nullopt.short_name && opt.long_name == nullopt.long_name && opt.has_arg == nullopt.has_arg && opt.flag == nullopt.flag && opt.help_msg == nullopt.help_msg;
 }
 
-// returns index of opts where short_opt matched
-// arg:
-//      short_opt: short option given as arguments
-//      opts: option list
-// return:
-//      0~: index of matched option / -1: not found
-int __optIndexShort(int short_opt, struct docoption *opts)
-{
-    int s = __optSize(opts);
-    int i;
-
-    for (i = 0; i < s; i++)
-    {
-        if (short_opt == opts[i].short_name)
-        {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-// returns index of opts where long_opt matched
-// arg:
-//      long_opt: long option given as arguments
-//      opts: option list
-// return:
-//      0~: index of matched option / -1: not found
-int __optIndexLong(char *long_opt, struct docoption *opts)
-{
-    int s = __optSize(opts);
-    int i;
-
-    for (i = 0; i < s; i++)
-    {
-        if (strcmp(long_opt, opts[i].long_name) == 0)
-        {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
 int __initOpts(char **shortopts, size_t longopts_size, struct option **longopts, size_t shortopts_size)
 {
     *shortopts = NULL;
