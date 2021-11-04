@@ -1,3 +1,9 @@
+/*
+optarg 2.0.0
+Copyright (C) 2021, GrapeJuice.
+GitHub: https://github.com/GrapeJuicer/optarg
+*/
+
 #pragma once
 
 // include ---------------------------------------
