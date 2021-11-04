@@ -60,12 +60,12 @@ struct docstyle
 // prototype -----------------------------------
 
 int getopt_once(
-    int argc,                      // 引数の個数
-    char *argv[],                  // 引数の内容
-    const char *shortopts,         // オプション群(短)
-    const struct option *longopts, // オプション群(長)
-    struct optarg findopts[],      // 見つかったオプションと引数の情報を格納する場所
-    int len_findopts               // findoptsの配列の長さ
+    int argc,                      // number of arguments
+    char *argv[],                  // arguments
+    const char *shortopts,         // short options
+    const struct option *longopts, // long options
+    struct optarg findopts[],      // found options
+    int len_findopts               // findopts array size
 );
 
 int getopt_flex(
