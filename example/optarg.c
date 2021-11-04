@@ -16,8 +16,7 @@ int getopt_once(int argc, char *argv[], const char *shortopts, const struct opti
     }
 
     i = 0;
-    while (!(longopts[i].name == 0 && longopts[i].has_arg == 0 &&
-           longopts[i].flag == 0 && longopts[i].val == 0))
+    while (!(longopts[i].name == 0 && longopts[i].has_arg == 0 && longopts[i].flag == 0 && longopts[i].val == 0))
     {
         // long option にて禁止オプション '?' を使用している．
         if (longopts[i].val == '?')
@@ -40,7 +39,7 @@ int getopt_once(int argc, char *argv[], const char *shortopts, const struct opti
         {
             continue;
         }
-        
+
         // 既に見つかっているかチェック
         for (i = 0; i < cnt; i++)
         {
@@ -65,7 +64,7 @@ int getopt_once(int argc, char *argv[], const char *shortopts, const struct opti
         // 追加
         findopts[cnt].opt = opt;
         findopts[cnt].arg = optarg;
-        
+
         cnt++;
     }
 
