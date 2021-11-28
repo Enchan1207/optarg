@@ -59,7 +59,7 @@ Normally, `getopt()` and `getopt_long()` can only parse one argument, so they ne
 # Usage
 
 There is a sample program in [example/](https://github.com/GrapeJuicer/optarg/blob/main/example) .
-In this section, we will explain the another example. The specifications are as follows:
+In this section, I will explain the another example. The specifications are as follows:
 
 | short option                      | long option                              | argument |
 | :-------------------------------- | :--------------------------------------- | :------- |
@@ -108,7 +108,7 @@ struct optarg findopts[OPTSIZE];
 
 ## Step. 4
 
-Processes the arguments using the `getopt_once` function:
+Analyze the arguments using the `getopt_once()` function:
 
 ```c
 int folen = getopt_once(argc, argv, shortopts, longopts, findopts, OPTSIZE);
@@ -123,11 +123,11 @@ int main(int argc, char *argv[])
 }
 ```
 
-The return value of the function `getopt_once` is the number of found options.
+The return value of the function `getopt_once()` is the number of found options.
 
 ## Step. 5
 
-The options obtained by the function `getopt_once` are processed as follows:
+The options obtained by the function `getopt_once()` are processed as follows:
 
 ```c
 int i;

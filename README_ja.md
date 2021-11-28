@@ -5,7 +5,7 @@ optarg は，C言語の `main` 関数で引数を簡単に処理するための�
 # 要求事項
 
 - ヘッダ
-  - string.h
+  - `string.h`
   - `getopt.h` (GNU拡張)
 
 # 宣言/定義
@@ -13,8 +13,8 @@ optarg は，C言語の `main` 関数で引数を簡単に処理するための�
 - 定義
   - `OPT_END`
   - `DOCOPT_END`
-  - DEFAULT_USAGE
-  - DEFAULT_STYLE
+  - `DEFAULT_USAGE`
+  - `DEFAULT_STYLE`
 - 構造体
   - `struct option` ... *This is a structure attached to `getopt.h`*
   - `struct optarg`
@@ -32,8 +32,8 @@ optarg は，C言語の `main` 関数で引数を簡単に処理するための�
   - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md)
   - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_once.md)
 - `getopt_flex()` による引数の解析
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md) *製作中
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md) *製作中
+  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
+  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
 
 # 問い合わせ
 | 項目    | 内容                                          |

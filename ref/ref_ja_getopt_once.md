@@ -2,7 +2,7 @@
 
 *English version is [here](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md).*
 
-こちらは，'getopt_once()' 関数と それに関連するもののリファレンスになります．
+こちらは，'getopt_once()' 関数とそれに関連する要素のリファレンスになります．
 
 *注: 2021/11/4に `getopt_once()` 関数は  `optprocess()` から改名されました*
 
@@ -99,7 +99,7 @@ option 構造体に関する詳細は[こちら](http://linuxjm.osdn.jp/html/LDP
 
 ## ステップ. 3
 
-検出されたオプションの情報を格納先を `struct optarg` 型の変数で宣言します．
+検出されたオプションの情報の格納先を `struct optarg` 型の変数で宣言します．
 
 ```c
 struct optarg findopts[OPTSIZE];
@@ -109,7 +109,7 @@ struct optarg findopts[OPTSIZE];
 
 ## ステップ. 4
 
-`getopt_once` 関数を用いて `main` 関数の引数を処理します．
+`getopt_once()` 関数を用いて `main` 関数の引数を解析します．
 
 ```c
 int folen = getopt_once(argc, argv, shortopts, longopts, findopts, OPTSIZE);
@@ -124,11 +124,11 @@ int main(int argc, char *argv[])
 }
 ```
 
-関数 `getopt_once` の戻り値は，見つかったオプションの数です．
+関数 `getopt_once()` の戻り値は，見つかったオプションの数です．
 
 ## ステップ. 5
 
-関数 `getopt_once` で取得したオプションは，以下のように処理します．
+関数 `getopt_once()` で取得したオプションは，以下のように処理します．
 
 ```c
 int i;

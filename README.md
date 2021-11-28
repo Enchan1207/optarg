@@ -5,7 +5,7 @@
 # Requirements
 
 - headers
-  - string.h
+  - `string.h`
   - `getopt.h` (GNU extension)
 
 # Items
@@ -13,8 +13,8 @@
 - Definition
   - `OPT_END`
   - `DOCOPT_END`
-  - DEFAULT_USAGE
-  - DEFAULT_STYLE
+  - `DEFAULT_USAGE`
+  - `DEFAULT_STYLE`
 - Structure
   - `struct option` ... *This is a structure attached to `getopt.h`*
   - `struct optarg`
@@ -32,8 +32,8 @@
   - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md)
   - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_once.md)
 - Parsing arguments with `getopt_flex()`
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md) *WIP
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md) *WIP
+  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
+  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
 
 # Contact
 | Contents | About                                         |
