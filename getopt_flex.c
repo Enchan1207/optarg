@@ -1,16 +1,24 @@
 #include "optarg.h"
 
+// summary:
+//      parse the arguments. more intuitive to use than 'getopt_once'
+// arg:
+//      argc: number of arguments
+//      argv: arguments
+//      docopts: option list
+//      findopts: array to store the found options
+//      findopt_size: size of findopts array
 // return:
 //      1~: index of the first non-optional argument
-//      ~-2: invalid option (Inverting the return value will result in the index of the problematic argument.)
-int getopt_flex(int argc, char **argv, const struct docoption *docopts, struct optarg *findopts, size_t findopts_size)
+//      -1: invalid option
+int getopt_flex(int argc, char** argv, const struct docoption* docopts, struct optarg* findopts, size_t findopts_size)
 {
     int i;
     int opt;
     int cnt = 0;
     int loptindex;
-    struct option *longopts;
-    char *shortopts;
+    struct option* longopts;
+    char* shortopts;
     int docopts_size = __optSize(docopts) + 1;
 
     // convert 'struct docoption' to 'struct option'(long option) and 'char *'(short option)
@@ -93,12 +101,13 @@ int getopt_flex(int argc, char **argv, const struct docoption *docopts, struct o
     return cnt;
 }
 
-// returns option list size.
+// summary:
+//      returns option list size.
 // arg:
 //      opts: option list
 // return:
 //      0~: option list size without DOCOPTION_END.
-int __optSize(const struct docoption *opts)
+int __optSize(const struct docoption* opts)
 {
     int cnt = 0;
 
@@ -109,24 +118,39 @@ int __optSize(const struct docoption *opts)
     return cnt;
 }
 
-int __isEnd(struct docoption opt)
+// summary:
+//      check if the option is DOCOPT_END.
+// arg:
+//      opt: option
+// return:
+//      0: not DOCOPT_END / not 0: DOCOPT_END
+int __isEnd(const struct docoption opt)
 {
     struct docoption nullopt = DOCOPT_END;
     return opt.val == nullopt.val && opt.short_name == nullopt.short_name && opt.long_name == nullopt.long_name && opt.has_arg == nullopt.has_arg && opt.help_msg == nullopt.help_msg;
 }
 
-int __initOpts(char **shortopts, size_t longopts_size, struct option **longopts, size_t shortopts_size)
+// summary:
+//      dynamically allocate an area to store longoption and shortoption.
+// arg:
+//      shortopts: short option's pointer x2
+//      shortopts_size: short option's array size
+//      longopts: long option's pointer x2
+//      longopts_size: long option's array size
+// return:
+//      0: success / -1: failure
+int __initOpts(char** shortopts, size_t shortopts_size, struct option** longopts, size_t longopts_size)
 {
     *shortopts = NULL;
     *longopts = NULL;
 
-    if ((*shortopts = (char *)malloc(sizeof(char) * shortopts_size)) == NULL)
+    if ((*shortopts = (char*)malloc(sizeof(char) * shortopts_size)) == NULL)
     {
         // error
         return -1;
     }
 
-    if ((*longopts = (struct option *)malloc(sizeof(struct option) * longopts_size)) == NULL)
+    if ((*longopts = (struct option*)malloc(sizeof(struct option) * longopts_size)) == NULL)
     {
         // error
         __flushOpts(*shortopts, *longopts);
@@ -136,14 +160,29 @@ int __initOpts(char **shortopts, size_t longopts_size, struct option **longopts,
     return 0;
 }
 
-void __flushOpts(char *shortopts, struct option *longopts)
+// summary:
+//      free up space for long option and short option
+// arg:
+//      shortopts: short option's pointer
+//      longopts: long option's pointer
+// return:
+//      void
+void __flushOpts(char* shortopts, struct option* longopts)
 {
     SFREE(shortopts);
     SFREE(longopts);
 }
 
-// convert from 'struct docoption' to 'struct option'
-int __generateLongOption(const struct docoption *docopts, size_t docopts_size, struct option *longopts, size_t longopts_size)
+// summary:
+//      convert options from 'struct docoption' to 'struct option'
+// arg:
+//      docopts: option list
+//      docopts_size: option list size
+//      longopts: long option's pointer
+//      longopts_size: long option's array size
+// return:
+//      0: success / -1: failure
+int __generateLongOption(const struct docoption* docopts, size_t docopts_size, struct option* longopts, size_t longopts_size)
 {
     int i, cnt = 0;
 
@@ -174,7 +213,16 @@ int __generateLongOption(const struct docoption *docopts, size_t docopts_size, s
     return 0;
 }
 
-int __generateShortOption(const struct docoption *docopts, size_t docopts_size, char *shortopts, size_t shortopts_size)
+// summary:
+//      convert options from 'struct docoption' to 'char'
+// arg:
+//      docopts: option list
+//      docopts_size: option list size
+//      shortopts: short option's pointer
+//      shortopts_size: short option's array size
+// return:
+//      0: success / -1: failure
+int __generateShortOption(const struct docoption* docopts, size_t docopts_size, char* shortopts, size_t shortopts_size)
 {
     char buf[4];
     int i;
@@ -214,7 +262,14 @@ int __generateShortOption(const struct docoption *docopts, size_t docopts_size, 
     return 0;
 }
 
-int __calShortOptsLength(const struct docoption *docopts, size_t docopts_size)
+// summary:
+//      calculate short option's length
+// arg:
+//      docopts: option list
+//      docopts_size: option list size
+// return:
+//      short option's length
+int __calShortOptsLength(const struct docoption* docopts, size_t docopts_size)
 {
     int i;
     int len = 0;
@@ -243,7 +298,15 @@ int __calShortOptsLength(const struct docoption *docopts, size_t docopts_size)
     return len;
 }
 
-int __convertOption(const struct docoption *docopts, struct option **longopts, char **shortopts)
+// summary:
+//      convert options from 'struct docoption' to 'struct option' and 'char'
+// arg:
+//      docopts: option list
+//      longopts: long option's pointer x2
+//      shortopts: short option's pointer x2
+// return:
+//      0: success / -1: failure
+int __convertOption(const struct docoption* docopts, struct option** longopts, char** shortopts)
 {
     // get docopts size
     int docopts_size = __optSize(docopts);

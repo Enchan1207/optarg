@@ -1,8 +1,15 @@
 #include "optarg.h"
 
-// option '?' 禁止
-// findoptsには見つかったオプションのvalが追加される
-int getopt_once(int argc, char *argv[], const char *shortopts, const struct option *longopts, struct optarg findopts[], int len_findopts)
+// summary:
+//      parse the arguments.
+// arg:
+//      argc: number of arguments.
+//      argv: arguments
+//      shortopts: short options
+//      longopts: long options
+//      findopts: array to store the found options
+//      len_findopts: size of findopts array
+int getopt_once(int argc, char* argv[], const char* shortopts, const struct option* longopts, struct optarg findopts[], int len_findopts)
 {
     int opt;
     int i;
