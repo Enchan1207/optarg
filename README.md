@@ -1,5 +1,7 @@
 # optarg 1.1.0
 
+日本語版は[こちら](https://github.com/GrapeJuicer/optarg/blob/main/README_ja.md)．
+
 'optarg' is a library for easy argument handling in the 'main' function of the C language.
 
 # Requirements
