@@ -35,6 +35,14 @@
   - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
   - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
 
+# Versions
+
+| Version | Highlight                                                                       |
+| :-----: | :------------------------------------------------------------------------------ |
+| v1.0.0  | First release.                                                                  |
+| v1.1.0  | Add `getopt_flex()`, `printHelp()`.<br>Rename `optprocess()` to `getopt_once()` |
+
+
 # Contact
 | Contents | About                                         |
 | :------- | :-------------------------------------------- |
