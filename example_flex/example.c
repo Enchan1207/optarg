@@ -65,5 +65,12 @@ int main(int argc, char *argv[])
         }
     }
 
+    printf("remain arguments ---\n");
+
+    for (i = optind; i < argc; i++)
+    {
+        printf("%s\n", argv[i]);
+    }
+
     return 0;
 }
