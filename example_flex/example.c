@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
         {opt_version , 'v', "version" , no_argument      , "This is version option." },
         {opt_require , 'r', "require" , required_argument, "This is required option."},
         {opt_optional, 'o', "optional", optional_argument, "This is optional option."},
-        {opt_short   , 's', "short"   , no_argument      , "This is short option."   },
-        {opt_long    , 'l', "long"    , no_argument      , "This is long option."    },
+        {opt_short   , 's', 0         , no_argument      , "This is short option."   },
+        {opt_long    , 0  , "long"    , no_argument      , "This is long option."    },
         DOCOPT_END
     };
 
