@@ -30,12 +30,7 @@
 
 ## Reference
 
-- Parsing arguments with `getopt_once()` (old: `optprocess()`)
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md)
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_once.md)
-- Parsing arguments with `getopt_flex()`
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
+See [Wiki](https://github.com/GrapeJuicer/optarg/wiki).
 
 ## Versions
 
