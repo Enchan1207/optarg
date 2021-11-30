@@ -30,12 +30,7 @@ optarg は，C言語の `main` 関数で引数を簡単に処理するための�
 
 ## リファレンス
 
-- `getopt_once()` (旧: `optprocess()`) による引数の解析
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md)
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_once.md)
-- `getopt_flex()` による引数の解析
-  - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
-  - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
+[Wiki](https://github.com/GrapeJuicer/optarg/wiki)を参照してください．
 
 ## バージョン情報
 
