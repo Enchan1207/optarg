@@ -4,13 +4,13 @@
 
 'optarg' is a library for easy argument handling in the 'main' function of the C language.
 
-# Requirements
+## Requirements
 
 - headers
   - `string.h`
   - `getopt.h` (GNU extension)
 
-# Items
+## Items
 
 - Definition
   - `OPT_END`
@@ -28,7 +28,7 @@
   - `printHelp(...)`
   - `printVersion(...)`
 
-# Reference
+## Reference
 
 - Parsing arguments with `getopt_once()` (old: `optprocess()`)
   - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_once.md)
@@ -37,15 +37,17 @@
   - [English](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_en_getopt_flex.md)
   - [Japanese](https://github.com/GrapeJuicer/optarg/blob/main/ref/ref_ja_getopt_flex.md)
 
-# Versions
+## Versions
 
 | Version | Highlight                                                                       |
 | :-----: | :------------------------------------------------------------------------------ |
 | v1.0.0  | First release.                                                                  |
 | v1.1.0  | Add `getopt_flex()`, `printHelp()`.<br>Rename `optprocess()` to `getopt_once()` |
 
+## License
+This repository is published under MIT License. In details, see [LICENSE](https://github.com/GrapeJuicer/optarg/edit/main/LICENSE).
 
-# Contact
+## Contact
 | Contents | About                                         |
 | :------- | :-------------------------------------------- |
 | Name     | GrapeJuice                                    |
