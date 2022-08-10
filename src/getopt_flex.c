@@ -256,7 +256,18 @@ int __generateShortOption(const struct docoption* docopts, size_t docopts_size, 
         default:
             return -1;
         }
-        strcat_s(shortopts, shortopts_size, buf);
+
+        // _s系関数はVisual Studioでしか使えない
+        #ifdef __STDC_LIB_EXT1__
+        if (strcat_s(shortopts, shortopts_size, buf) != 0){
+            return -1;
+        }
+        #else
+
+        // TODO: strcat_s相当の関数の実装
+        // strcat_s(結合元, 結合元長さ, 結合したい文字列)
+        strcat(shortopts, buf);
+        #endif
     }
 
     return 0;

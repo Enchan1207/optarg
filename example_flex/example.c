@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../optarg.h"
+#include <optarg.h>
 
 #define VERSION "1.0.0"
 #define COPYRIGHT "Copyright (C) 2021, GrapeJuice."
