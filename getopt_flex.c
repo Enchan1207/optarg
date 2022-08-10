@@ -256,7 +256,11 @@ int __generateShortOption(const struct docoption* docopts, size_t docopts_size, 
         default:
             return -1;
         }
+        #ifdef __STDC_LIB_EXT1__
         strcat_s(shortopts, shortopts_size, buf);
+        #else
+        strcat(shortopts, buf);
+        #endif
     }
 
     return 0;
