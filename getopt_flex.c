@@ -228,7 +228,7 @@ int __generateShortOption(const struct docoption* docopts, size_t docopts_size, 
     int i;
 
     // check array size
-    if (shortopts_size < __calShortOptsLength(docopts, docopts_size))
+    if (shortopts_size < __calShortOptsSize(docopts, docopts_size))
     {
         return -1;
     }
@@ -267,13 +267,13 @@ int __generateShortOption(const struct docoption* docopts, size_t docopts_size, 
 }
 
 // summary:
-//      calculate short option's length
+//      returns short option size.
 // arg:
 //      docopts: option list
 //      docopts_size: option list size
 // return:
-//      short option's length
-int __calShortOptsLength(const struct docoption* docopts, size_t docopts_size)
+//      short option's size
+int __calShortOptsSize(const struct docoption* docopts, size_t docopts_size)
 {
     int i;
     int len = 0;
@@ -296,9 +296,6 @@ int __calShortOptsLength(const struct docoption* docopts, size_t docopts_size)
         }
     }
 
-    // add '\0'
-    len++;
-
     return len;
 }
 
@@ -314,9 +311,10 @@ int __convertOption(const struct docoption* docopts, struct option** longopts, c
 {
     // get docopts size
     int docopts_size = __optSize(docopts);
+    int shortopts_size = __calShortOptsSize(docopts, docopts_size);
 
     // get short opts array length
-    int shortopts_len = __calShortOptsLength(docopts, docopts_size);
+    int shortopts_len = shortopts_size + 1;
     int longopts_len = docopts_size + 1;
 
     // initialize long opts and short opts
@@ -326,7 +324,7 @@ int __convertOption(const struct docoption* docopts, struct option** longopts, c
     }
 
     // generate short option
-    if (__generateShortOption(docopts, docopts_size, *shortopts, shortopts_len) == -1)
+    if (__generateShortOption(docopts, docopts_size, *shortopts, shortopts_size) == -1)
     {
         __flushOpts(*shortopts, *longopts);
         return -1;

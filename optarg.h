@@ -91,7 +91,7 @@ void __flushOpts           (char *shortopts, struct option *longopts);
 int  __optSize             (const struct docoption *opts);
 int  __generateLongOption  (const struct docoption *docopts, size_t docopts_size, struct option *longopts, size_t longopts_size);
 int  __generateShortOption (const struct docoption *docopts, size_t docopts_size, char *shortopts, size_t shortopts_size);
-int  __calShortOptsLength  (const struct docoption *docopts, size_t docopts_size);
+int  __calShortOptsSize    (const struct docoption *docopts, size_t docopts_size);
 int  __convertOption       (const struct docoption *docopts, struct option **longopts, char **shortopts);
 int  __isEnd               (const struct docoption opt);
 
