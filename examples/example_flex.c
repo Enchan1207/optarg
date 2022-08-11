@@ -24,15 +24,15 @@ int main(int argc, char *argv[])
         {opt_require , 'r', "require" , required_argument, "This is required option."},
         {opt_optional, 'o', "optional", optional_argument, "This is optional option."},
         {opt_short   , 's', 0         , no_argument      , "This is short option."   },
-        {opt_long    , 0  , "long"    , no_argument      , "This is long option."    },
-        DOCOPT_END
+        {opt_long    , 0  , "long"    , no_argument      , "This is long option."    }
     };
+    const size_t docopts_size = sizeof(opts) / sizeof(struct docoption);
 
     // found options
     struct optarg findopts[OPTSIZE];
 
     // analyze
-    int folen = getopt_flex(argc, argv, opts, findopts, OPTSIZE);
+    int folen = getopt_flex(argc, argv, opts, docopts_size, findopts, OPTSIZE);
 
     // process found options
     int i;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             {
             case opt_help:
                 printf("help option is selected.\n");
-                printHelp(opts, argv[0], DEFAULT_USAGE, DEFAULT_STYLE, "This is header -----", "This is footer -----");
+                printHelp(opts, docopts_size, argv[0], DEFAULT_USAGE, DEFAULT_STYLE, "This is header -----", "This is footer -----");
                 break;
             case opt_version:
                 printf("version option is selected.\n");

@@ -18,7 +18,6 @@ GitHub: https://github.com/GrapeJuicer/optarg
 
 // termination
 #define OPT_END {0, 0, 0, 0}        // for 'struct option'
-#define DOCOPT_END {-1, 0, 0, 0, 0} // for 'struct docoption'
 
 // safe free macro
 #define SFREE(ptr) { free(ptr); ptr = NULL; }
@@ -99,20 +98,14 @@ int getopt_once(int argc, char *argv[], const char *shortopts, const struct opti
  * @param argc 引数の数
  * @param argv 引数配列のポインタ
  * @param docopts オプション配列
+ * @param docopts_size docoptsの長さ
  * @param findopts パースされたオプションの配列
  * @param findopts_size findoptsの長さ
  * @return int 成功した場合は non-optional argument のインデックスが、失敗した場合は-1が返ります。
  */
-int getopt_flex(int argc, char **argv, const struct docoption *docopts, struct optarg *findopts, size_t findopts_size);
-
-int __initOpts(char **shortopts, size_t shortopts_size, struct option **longopts, size_t longopts_size);
-void __flushOpts(char *shortopts, struct option *longopts);
-int __optSize(const struct docoption *opts);
-int __generateLongOption(const struct docoption *docopts, size_t docopts_size, struct option *longopts, size_t longopts_size);
-int __generateShortOption(const struct docoption *docopts, size_t docopts_size, char *shortopts, size_t shortopts_size);
-int __calShortOptsSize(const struct docoption *docopts, size_t docopts_size);
-int __convertOption(const struct docoption *docopts, struct option **longopts, char **shortopts);
-int __isEnd(const struct docoption opt);
+int getopt_flex(const int argc, char **argv,
+                const struct docoption *docopts, const size_t docopts_size,
+                struct optarg *findopts, const size_t findopts_size);
 
 // getopt_help.cpp
 
@@ -121,6 +114,7 @@ int __isEnd(const struct docoption opt);
  * @brief ヘルプメッセージを表示します。
  * 
  * @param docopts オプション配列
+ * @param docopts_size docoptsの長さ
  * @param progname 名称
  * @param usage_arg 使用法に関する説明
  * @param style ヘルプメッセージのスタイル
@@ -128,7 +122,8 @@ int __isEnd(const struct docoption opt);
  * @param footer フッタ (optional)
  * @return int 成功した場合は0, 失敗した場合は-1が返ります。
  */
-int printHelp(const struct docoption *docopts, const char *progname, const char *usage_arg, const struct docstyle style, const char *header, const char *footer);
+int printHelp(const struct docoption *docopts, const size_t docopts_size,
+              const char *progname, const char *usage_arg, const struct docstyle style, const char *header, const char *footer);
 
 /**
  * @fn printVersion
@@ -139,11 +134,3 @@ int printHelp(const struct docoption *docopts, const char *progname, const char 
  * @param postscript 詳細情報
  */
 void printVersion(const char *progname, const char *version, const char *postscript);
-
-void __printUsage(const char *progname, const char *usage_arg);
-int __shortOptionCommandLength(const struct docoption *docopts, int docopts_size);
-size_t __longOptionCommandLength(const struct docoption *docopts, int docopts_size);
-// int  __optionCommandLength      (const struct docoption *docopts, int docopts_size);
-int __printOptionCommand(const struct docoption opt, size_t slen, size_t llen, struct docstyle style);
-void __printOptionDocs(const char *docs, size_t indent, size_t min_line_size);
-size_t __calIndentSize(size_t slen, size_t llen, const struct docstyle style);

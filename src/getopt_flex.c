@@ -1,5 +1,14 @@
 #include "optarg.h"
 
+// TODO: these prototypes are temporally
+int __initOpts(char **shortopts, size_t shortopts_size, struct option **longopts, size_t longopts_size);
+void __flushOpts(char *shortopts, struct option *longopts);
+int __generateLongOption(const struct docoption *docopts, size_t docopts_size, struct option *longopts, size_t longopts_size);
+int __generateShortOption(const struct docoption *docopts, size_t docopts_size, char *shortopts, size_t shortopts_size);
+int __calShortOptsSize(const struct docoption *docopts, const size_t docopts_size);
+int __convertOption(const struct docoption *docopts, const size_t docopts_size, 
+                    struct option **longopts, char **shortopts);
+
 // summary:
 //      parse the arguments. more intuitive to use than 'getopt_once'
 // arg:
@@ -11,17 +20,18 @@
 // return:
 //      1~: index of the first non-optional argument
 //      -1: invalid option
-int getopt_flex(int argc, char** argv, const struct docoption* docopts, struct optarg* findopts, size_t findopts_size) {
+int getopt_flex(const int argc, char **argv,
+                const struct docoption *docopts, const size_t docopts_size,
+                struct optarg *findopts, const size_t findopts_size) {
     int i;
     int opt;
     int cnt = 0;
     int loptindex;
     struct option* longopts;
     char* shortopts;
-    int docopts_size = __optSize(docopts) + 1;
 
     // convert 'struct docoption' to 'struct option'(long option) and 'char *'(short option)
-    if (__convertOption(docopts, &longopts, &shortopts) == -1) {
+    if (__convertOption(docopts, docopts_size, &longopts, &shortopts) == -1) {
         return -1;
     }
 
@@ -85,32 +95,6 @@ int getopt_flex(int argc, char** argv, const struct docoption* docopts, struct o
     __flushOpts(shortopts, longopts);
 
     return cnt;
-}
-
-// summary:
-//      returns option list size.
-// arg:
-//      opts: option list
-// return:
-//      0~: option list size without DOCOPTION_END.
-int __optSize(const struct docoption* opts) {
-    int cnt = 0;
-
-    while (!__isEnd(opts[cnt])) {
-        cnt++;
-    }
-    return cnt;
-}
-
-// summary:
-//      check if the option is DOCOPT_END.
-// arg:
-//      opt: option
-// return:
-//      0: not DOCOPT_END / not 0: DOCOPT_END
-int __isEnd(const struct docoption opt) {
-    struct docoption nullopt = DOCOPT_END;
-    return opt.val == nullopt.val && opt.short_name == nullopt.short_name && opt.long_name == nullopt.long_name && opt.has_arg == nullopt.has_arg && opt.help_msg == nullopt.help_msg;
 }
 
 // summary:
@@ -245,7 +229,7 @@ int __generateShortOption(const struct docoption* docopts, size_t docopts_size, 
 //      docopts_size: option list size
 // return:
 //      short option's size
-int __calShortOptsSize(const struct docoption* docopts, size_t docopts_size) {
+int __calShortOptsSize(const struct docoption *docopts, const size_t docopts_size) {
     int i;
     int len = 0;
 
@@ -276,9 +260,9 @@ int __calShortOptsSize(const struct docoption* docopts, size_t docopts_size) {
 //      shortopts: short option's pointer x2
 // return:
 //      0: success / -1: failure
-int __convertOption(const struct docoption* docopts, struct option** longopts, char** shortopts) {
+int __convertOption(const struct docoption *docopts, const size_t docopts_size, 
+                    struct option **longopts, char **shortopts){
     // get docopts size
-    int docopts_size = __optSize(docopts);
     int shortopts_size = __calShortOptsSize(docopts, docopts_size);
 
     // get short opts array length

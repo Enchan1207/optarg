@@ -1,7 +1,16 @@
 #include "optarg.h"
 
-int printHelp(const struct docoption* docopts, const char* progname, const char* usage_arg, const struct docstyle style, const char* header, const char* footer) {
-    int docopts_size = __optSize(docopts);
+// TODO: these prototypes are temporally
+void __printUsage(const char *progname, const char *usage_arg);
+int __shortOptionCommandLength(const struct docoption *docopts, int docopts_size);
+size_t __longOptionCommandLength(const struct docoption *docopts, int docopts_size);
+int __printOptionCommand(const struct docoption opt, size_t slen, size_t llen, struct docstyle style);
+void __printOptionDocs(const char *docs, size_t indent, size_t min_line_size);
+size_t __calIndentSize(size_t slen, size_t llen, const struct docstyle style);
+
+
+int printHelp(const struct docoption *docopts, const size_t docopts_size,
+              const char *progname, const char *usage_arg, const struct docstyle style, const char *header, const char *footer){
     size_t slen = __shortOptionCommandLength(docopts, docopts_size);
     size_t llen = __longOptionCommandLength(docopts, docopts_size);
     size_t doc_indent = __calIndentSize(slen, llen, style);
