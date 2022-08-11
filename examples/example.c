@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../optarg.h"
+#include <optarg.h>
 
 #define OPTSIZE 10 // >= 4
 
