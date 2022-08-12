@@ -3,9 +3,6 @@
 #
 cmake_minimum_required(VERSION 3.21)
 
-add_executable(example example.c)
-target_link_libraries(example optarg)
-
 add_executable(example_flex example_flex.c)
 target_link_libraries(example_flex optarg)
 

@@ -16,9 +16,6 @@ GitHub: https://github.com/GrapeJuicer/optarg
 
 // Definition -----------------------------------------------
 
-// termination
-#define OPT_END {0, 0, 0, 0}        // for 'struct option'
-
 // safe free macro
 #define SFREE(ptr) { free(ptr); ptr = NULL; }
 
@@ -72,22 +69,6 @@ struct docstyle {
 };
 
 // prototype -----------------------------------
-
-// optarg.cpp
-
-/**
- * @fn getopt_once
- * @brief 引数に渡された実行引数の配列をgetopt-likeにパースし、結果を返します。
- * 
- * @param argc 引数の数
- * @param argv 引数配列のポインタ
- * @param shortopts 短いオプションの配列
- * @param longopts 長いオプションの配列
- * @param findopts パースされたオプションの配列
- * @param len_findopts findoptsの長さ
- * @return int 成功した場合は0, 失敗した場合は-1が返ります。
- */
-int getopt_once(int argc, char *argv[], const char *shortopts, const struct option *longopts, struct optarg findopts[], int len_findopts);
 
 // getopt_flex.cpp
 
