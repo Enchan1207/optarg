@@ -84,7 +84,7 @@ struct docstyle {
  * @param findopts_size findoptsの長さ
  * @return int 成功した場合は non-optional argument のインデックスが、失敗した場合は-1が返ります。
  */
-int getopt_flex(const int argc, char **argv,
+int getopt_flex(const int argc, const char **argv,
                 const struct docoption *docopts, const size_t docopts_size,
                 struct optarg *findopts, const size_t findopts_size);
 

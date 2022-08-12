@@ -20,7 +20,7 @@ int __convertOption(const struct docoption *docopts, const size_t docopts_size,
 // return:
 //      1~: index of the first non-optional argument
 //      -1: invalid option
-int getopt_flex(const int argc, char **argv,
+int getopt_flex(const int argc, const char **argv,
                 const struct docoption *docopts, const size_t docopts_size,
                 struct optarg *findopts, const size_t findopts_size) {
     int i;
@@ -54,7 +54,7 @@ int getopt_flex(const int argc, char **argv,
         findopts[i].arg = NULL;
     }
 
-    while ((opt = getopt_long(argc, argv, shortopts, longopts, &loptindex)) != -1) {
+    while ((opt = getopt_long(argc, (char * const *)argv, shortopts, longopts, &loptindex)) != -1) {
         // 見つからなかった場合は何もしない
         if (opt == '?') {
             continue;

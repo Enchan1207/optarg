@@ -15,7 +15,7 @@ enum
     opt_long,
 };
 
-int main(int argc, char *argv[])
+int main(int argc, char const *argv[])
 {
     // option list
     struct docoption opts[] = {
